@@ -1,0 +1,109 @@
+
+<div layout="column" class="relative" layout-fill role="main">
+  <md-content flex>
+    <div layout-padding="">
+      <md-subheader class="md-primary">
+        <span class="md-title inset ">Issues</span>
+        <input placeholder="Search" ng-model="search">
+      </md-subheader>
+
+      <md-card class="container" flex-auto="" md-scroll-y>
+              <md-list>
+                <md-list-item>
+                  <md-input-container class="md-block" flex-gt-xs>
+                    <label> State<span class="caret"></span> </label>
+
+                    <md-select ng-model="mainCtrl.state" ng-change="mainCtrl.onStateChange()">
+                      <md-option ng-value="stateItem.name" ng-repeat="stateItem in mainCtrl.typesOfStates">
+                        {{stateItem.name | uppercase}}
+                      </md-option>
+                    </md-select>
+
+                  </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label> Sort By <span class="caret"></span> </label>
+                    <md-select ng-model="mainCtrl.defaultSortOrder" ng-change="mainCtrl.onStateChange()">
+                      <md-option ng-value="sortItem.value" ng-repeat="sortItem in mainCtrl.typesOfSorting">
+                       {{sortItem.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-button class="md-warn md-hue-1 md-block" ng-click="mainCtrl.onDateChange()" flex-gt-xs=>
+                    <span ng-bind="mainCtrl.dateSortText"></span>
+                    <span ng-show="!mainCtrl.sortReverse">
+                      <i class="material-icons">keyboard_arrow_down</i>
+                    </span>
+                    <span ng-show="mainCtrl.sortReverse">
+                      <i class="material-icons">keyboard_arrow_up</i>
+                    </span>
+                  </md-button>
+                </md-list-item>
+
+                <md-list-item class="md-3-line" ng-repeat="item in mainCtrl.listOfIssues | filter: search">
+                  <md-button aria-label class="md-icon-button listLogo">
+                    <img class="logo-image" ng-src="{{item.user.avatar_url}}">
+                  </md-button>
+                  <div class="md-list-item-text">
+                    <a href="" ng-click="mainCtrl.goToDetailsPage(item.number)">
+                      <h3>
+                        <b ng-bind="item.title | descrLimit: 50"></b>
+                          <b ng-class="item.state == 'open' ? 'success' : 'error'" ng-bind="' : ' +item.state"> </b>
+                      </h3>
+                    </a>
+                    <p>
+                      <span class="md-caption"> #
+                        <span ng-bind="item.number"></span>
+
+                        <span ng-switch on="item.state">
+                          <span ng-switch-when="closed">
+                            <span ng-bind="' ' + item.state + ' on '"></span>
+                            <span ng-bind="item.closed_at | date: 'mediumDate'"></span>
+                          </span>
+                          <span ng-switch-default>
+                            <span ng-bind="' ' + item.state + 'd on '"></span>
+                            <span ng-bind="item.created_at | date: 'mediumDate'"></span>
+                          </span>
+                        </span>
+                        <span>by </span>
+                        <a ng-href="{{item.user.html_url}}" class="userId">
+                          <span ng-bind="item.user.login"></span>
+                          <md-tooltip>View {{item.user.login}}'s profile </md-tooltip>
+                        </a>
+                        <span ng-repeat="labelItem in item.labels" class="md-text">
+                          <label>
+                            <a class="btn btn-xs" aria-label="Labels" ng-style="mainCtrl.set_color(labelItem.color)">
+                              {{labelItem.name}}
+                            </a>
+                          </label>
+                        </span>
+                    </span>
+                      <label hide-xs="" class="pull-right">
+                        <i class="material-icons">comment</i>
+                        <span ng-bind="item.comments"></span>
+                        <md-tooltip md-direction="left">Number of comments by this user</md-tooltip>
+                      </label>
+                    </p>
+                    <h3>
+                      <span ng-bind="item.body | descrLimit: 140"></span>
+                    </h3>
+                  </div>
+                <md-divider></md-divider>
+                </md-list-item>
+
+              </md-list>
+              <div layout="row" layout-align="center center">
+                <ul uib-pagination
+                    total-items="mainCtrl.totalItems"
+                    data-ng-model="mainCtrl.currentPage"
+                    data-ng-change="mainCtrl.pageChanged(mainCtrl.currentPage, mainCtrl.defaultSortOrder, mainCtrl.state, mainCtrl.direction)"
+                    items-per-page="mainCtrl.itemsPerPage"
+                    max-size="mainCtrl.maxPaginationSize"
+                    class="pagination-sm"
+                    force-ellipses="true">
+
+                </ul>
+              </div>
+            </md-card>
+    </div>
+  </md-content>
+</div>

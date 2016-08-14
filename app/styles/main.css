@@ -1,0 +1,83 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+:root {
+  --mainbg-color: #eeeeee;
+  --cardcontent-color: #ffffff;
+  --link-color: #737373;
+  --link-hover-color: #0b97c4;
+}
+
+body {
+  padding: 0;
+}
+
+/* The rest of the CSS file */
+md-content {
+  background-color: var(--mainbg-color);
+}
+
+md-card {
+  background-color: var(--cardcontent-color);
+}
+
+md-card a:first-of-type{
+  margin-top: 0;
+  color: #000000;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+
+md-toolbar:not(.md-hue-1), .md-fab {
+  fill: #fff;
+}
+
+
+.md-button.listLogo {
+  height: 7rem;
+  width: 7rem;
+}
+
+.logo-image {
+  -webkit-border-radius: 3em;
+  -moz-border-radius: 3em;
+  border-radius: 3em;
+}
+
+.md-list-item-text{
+  overflow-x: scroll;
+}
+
+.success {
+  color: #00A000;
+}
+
+.error {
+  color: red;
+}
+
+.issuesLogo {
+  width: 100%;
+  border-radius: 1px;
+}
+
+.userId:link {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.userId:hover {
+  color: var(--link-hover-color);
+}
+
+.issueBlocks {
+  height: 80px;
+  overflow-y: auto;
+}

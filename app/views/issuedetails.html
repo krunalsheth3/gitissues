@@ -1,0 +1,136 @@
+<div layout="column" class="relative" layout-fill role="main">
+  <md-content flex="">
+    <md-card layout-padding="">
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text ">
+            <h3>
+              <b ng-bind="issueDetailsCtrl.issueDetails.title"></b>
+              <b ng-class="issueDetailsCtrl.issueDetails.state == 'open' ? 'success' : 'error'" ng-bind="' : ' +issueDetailsCtrl.issueDetails.state"> </b>
+            </h3>
+            <p>
+              <span class="md-caption"> #
+                <span ng-bind="issueDetailsCtrl.issueDetails.number"></span>
+                <span ng-switch on="issueDetailsCtrl.issueDetails.state">
+                  <span ng-switch-when="closed">
+                    <span ng-bind="' ' + item.state + ' on '"></span>
+                    <span ng-bind="issueDetailsCtrl.issueDetails.closed_at | date: 'mediumDate'"></span>
+                  </span>
+                  <span ng-switch-default>
+                    <span ng-bind="' ' + issueDetailsCtrl.issueDetails.state + 'd on '"></span>
+                    <span ng-bind="issueDetailsCtrl.issueDetails.created_at | date: 'mediumDate'"></span>
+                  </span>
+                </span>
+                <span>by </span>
+                <a ng-href="{{issueDetailsCtrl.issueDetails.user.html_url}}" class="userId">
+                  <span ng-bind="issueDetailsCtrl.issueDetails.user.login"></span>
+                  <md-tooltip>View {{issueDetailsCtrl.issueDetails.user.login}}'s profile </md-tooltip>
+                </a>
+                </span>
+            </p>
+          </div>
+        </md-list-item>
+        </md-list>
+      </md-list-item>
+
+      <md-divider></md-divider>
+
+      <div layout="row" layout-sm="column">
+        <div flex-gt-sm="80" >
+          <md-card>
+
+            <md-list-item ng-repeat="commentsItem in issueDetailsCtrl.commentsData" layout-padding="">
+            <md-button aria-label class="listLogo">
+              <img class="" ng-src="{{commentsItem.user.avatar_url}}">
+            </md-button>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <a ng-href="{{commentsItem.user.html_url}}" class="userId">
+                  <span ng-bind="commentsItem.user.login"></span>
+                  <md-tooltip>View {{commentsItem.user.login}}'s profile </md-tooltip>
+                </a>
+                <span> last updated on </span>
+                <span class="md-caption" ng-bind="commentsItem.updated_at | date: 'mediumDate'"></span>
+              </div>
+              <div class="panel-body">
+                <span ng-bind-html="commentsItem.body | parseUserId : commentsItem.user.html_url"></span>
+              </div>
+
+            </div>
+            </md-list-item>
+            <div layout="row" layout-align="center center">
+              <ul uib-pagination
+                  total-items="issueDetailsCtrl.totalItems"
+                  data-ng-model="issueDetailsCtrl.currentPage"
+                  data-ng-change="issueDetailsCtrl.pageChanged(issueDetailsCtrl.currentPage)"
+                  items-per-page="issueDetailsCtrl.itemsPerPage"
+                  max-size="issueDetailsCtrl.maxPaginationSize"
+                  class="pagination-sm"
+                  force-ellipses="true">
+
+              </ul>
+            </div>
+          </md-card>
+        </div>
+        <div flex-gt-sm="20" hide-xs>
+          <md-card>
+            <md-card-header>
+              <md-card-header-text class="issueBlocks">
+                <span class="md-subhead">Labels</span>
+                <span class="md-subhead"  ng-repeat="labelItem in issueDetailsCtrl.issueDetails.labels">
+                  <a class="btn btn-xs" aria-label="Labels" ng-style="issueDetailsCtrl.set_color(labelItem.color)">
+                    {{labelItem.name}}
+                  </a>
+                </span>
+              </md-card-header-text>
+              <md-card-content>
+                </md-card-content>
+            </md-card-header>
+          </md-card>
+
+          <md-card>
+            <md-card-header>
+              <md-card-header-text class="issueBlocks">
+                <span class="md-subhead">Assignees</span>
+                <span class="md-subhead"  ng-repeat="assigneeItem in issueDetailsCtrl.issueDetails.assignees">
+                  <md-button aria-label class="md-icon-button">
+                    <img class="" ng-src="{{assigneeItem.avatar_url}}">
+                  </md-button>
+                  <a ng-href="{{assigneeItem.html_url}}" aria-label="Assignees" class="userId">
+                    {{assigneeItem.login}}
+                  </a>
+                </span>
+              </md-card-header-text>
+              <md-card-content>
+              </md-card-content>
+            </md-card-header>
+          </md-card>
+
+          <md-card>
+            <md-card-header>
+              <md-card-header-text class="issueBlocks">
+                <span class="md-subhead">Milestones</span>
+                <span class="md-subhead"  ng-repeat="mileStoneItem in issueDetailsCtrl.issueDetails.milestone">
+                  <a ng-href="{{mileStoneItem.html_url}}" aria-label="Milestones">
+                    {{mileStoneItem.title}}
+                  </a>
+                </span>
+              </md-card-header-text>
+              <md-card-content>
+              </md-card-content>
+            </md-card-header>
+          </md-card>
+
+        </div>
+      </div>
+
+      <md-list>
+        <md-list-item class="md-3-line md-long-text">
+          <div class="md-list-item-text">
+
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-card>
+  </md-content>
+</div>
