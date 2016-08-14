@@ -18,10 +18,11 @@ angular.module('gitissuesApp')
       parseLinkHeader: function(linkHeader) {
         var querystring = "";
         //Split links by Comma
-        var linksArr = linkHeader.split(',');
-        var obj = {};
 
         try{
+          var linksArr = linkHeader.split(',');
+          var obj = {};
+
           // Parse each part into a named link
           angular.forEach(linksArr, function (value) {
             var section = value.split(';');
@@ -46,7 +47,7 @@ angular.module('gitissuesApp')
           return params.page;
         } catch(e) {
           //default the max limit of the entries
-          return 1200;
+          return 1;
         }
 
       },
@@ -59,7 +60,8 @@ angular.module('gitissuesApp')
           color = "#" + color;
           return {
             'background-color': color,
-            'color' : '#FFFFFF'
+            'color' : '#FFFFFF',
+            'height': '19px'
           };
         }
       },

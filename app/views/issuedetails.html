@@ -36,10 +36,29 @@
       <md-divider></md-divider>
 
       <div layout="row" layout-sm="column">
-        <div flex-gt-sm="80" >
-          <md-card>
+        <div flex-gt-xs="80" >
+          <md-card layout-padding="">
 
-            <md-list-item ng-repeat="commentsItem in issueDetailsCtrl.commentsData" layout-padding="">
+            <md-list-item>
+              <md-button aria-label class="listLogo">
+                <img class="" ng-src="{{issueDetailsCtrl.issueDetails.user.avatar_url}}">
+              </md-button>
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <a ng-href="{{issueDetailsCtrl.issueDetails.user.html_url}}" class="userId">
+                    <span ng-bind="issueDetailsCtrl.issueDetails.user.login"></span>
+                    <md-tooltip>View {{issueDetailsCtrl.issueDetails.user.login}}'s profile </md-tooltip>
+                  </a>
+                  <span> last updated on </span>
+                  <span class="md-caption" ng-bind="issueDetailsCtrl.issueDetails.updated_at | date: 'mediumDate'"></span>
+                </div>
+                <div class="panel-body">
+                  <span ng-bind-html="issueDetailsCtrl.issueDetails.body | parseUserId : commentsItem.user.html_url"></span>
+                </div>
+              </div>
+            </md-list-item>
+
+            <md-list-item ng-repeat="commentsItem in issueDetailsCtrl.commentsData">
             <md-button aria-label class="listLogo">
               <img class="" ng-src="{{commentsItem.user.avatar_url}}">
             </md-button>
@@ -72,7 +91,7 @@
             </div>
           </md-card>
         </div>
-        <div flex-gt-sm="20" hide-xs>
+        <div flex-gt-xs="20" hide-xs>
           <md-card>
             <md-card-header>
               <md-card-header-text class="issueBlocks">

@@ -12,17 +12,15 @@ angular.module('gitissuesApp')
 
   /*
   * This filter trims the long string to l characters and takes care of not breaking the word space too
-  * .{"+l+"} matches any character (except newline)
-  * {"+l+"} Exactly l times
-  * \S* match any non-white space character
+  * \r matches carriage return, \n matches newline, \b will take care of word boundary
+  * . will match any character {1,140} between 1 to 140 chars
   *  Between zero and unlimited times
    */
   .filter('descrLimit', function () {
     return function (input, l) {
       var x =  input;
       if(angular.isDefined(input))
-        x = (input.match(new RegExp(".{"+l+"}\\S*")) || [input]) [0];
-
+        x = input.match(/^(\r\n|.){1,140}\b/g);
       return x;
     };
   })

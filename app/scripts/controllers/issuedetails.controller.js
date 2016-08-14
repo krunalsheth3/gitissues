@@ -8,8 +8,8 @@
  * Controller of the gitissuesApp
  */
 angular.module('gitissuesApp')
-  .controller('IssuedetailsCtrl',['issueDetails', 'defaultConst', 'sharedSvc', 'issuedetailsSvc', '$stateParams','$anchorScroll',
-                function (issueDetails, defaultConst, sharedSvc, issuedetailsSvc, $stateParams, $anchorScroll) {
+  .controller('IssuedetailsCtrl',['issueDetails', 'defaultConst', 'sharedSvc', 'issuedetailsSvc', '$stateParams',
+                function (issueDetails, defaultConst, sharedSvc, issuedetailsSvc, $stateParams) {
 
     var self = this;
     self.itemsPerPage = defaultConst.itemsPerPage;
@@ -50,7 +50,7 @@ angular.module('gitissuesApp')
     self.pageChanged = function(page) {
       self.currentPage = page;
       getComments(self.currentPage);
-      $anchorScroll('/');
+
     }
     /*
     * set color for labels

@@ -7,7 +7,6 @@ angular.module('gitissuesApp')
     $urlRouterProvider.when('issues/', '/issues');
 
     $stateProvider
-    $stateProvider
       .state('issues', {
         url: '/issues',
         templateUrl: 'views/main.html',
