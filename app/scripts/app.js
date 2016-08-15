@@ -37,5 +37,12 @@ angular
   })
 
 
+  .config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('indigo')
+      .accentPalette('lime');
+  });
+
+
 
 

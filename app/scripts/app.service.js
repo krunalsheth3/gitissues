@@ -8,7 +8,7 @@
  * Factory in the gitissuesApp.
  */
 angular.module('gitissuesApp')
-  .factory('gitIssuesInterceptor',['$rootScope', function ($rootScope) {
+  .factory('gitIssuesInterceptor',['$rootScope','$injector', function ($rootScope, $injector) {
     $rootScope.showIndicator = false;
 
       return {
@@ -34,6 +34,7 @@ angular.module('gitissuesApp')
         },
         responseError: function (rejection) {
           $rootScope.showIndicator = false;
+          $injector.get('$state').go('error');
         }
 
       }

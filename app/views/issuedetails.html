@@ -22,10 +22,9 @@
                   </span>
                 </span>
                 <span>by </span>
-                <a ng-href="{{issueDetailsCtrl.issueDetails.user.html_url}}" class="userId">
-                  <span ng-bind="issueDetailsCtrl.issueDetails.user.login"></span>
-                  <md-tooltip>View {{issueDetailsCtrl.issueDetails.user.login}}'s profile </md-tooltip>
-                </a>
+
+                <userid details="issueDetailsCtrl.issueDetails"></userid>
+
                 </span>
             </p>
           </div>
@@ -37,45 +36,38 @@
 
       <div layout="row" layout-sm="column">
         <div flex-gt-xs="80" >
-          <md-card layout-padding="">
 
             <md-list-item>
               <md-button aria-label class="listLogo">
                 <img class="" ng-src="{{issueDetailsCtrl.issueDetails.user.avatar_url}}">
               </md-button>
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <a ng-href="{{issueDetailsCtrl.issueDetails.user.html_url}}" class="userId">
-                    <span ng-bind="issueDetailsCtrl.issueDetails.user.login"></span>
-                    <md-tooltip>View {{issueDetailsCtrl.issueDetails.user.login}}'s profile </md-tooltip>
-                  </a>
+              <md-card>
+                <md-card-header-text class="panel-heading bg-info">
+                  <userid details="issueDetailsCtrl.issueDetails"></userid>
                   <span> last updated on </span>
                   <span class="md-caption" ng-bind="issueDetailsCtrl.issueDetails.updated_at | date: 'mediumDate'"></span>
-                </div>
-                <div class="panel-body">
+                </md-card-header-text>
+                <md-card-content>
                   <span ng-bind-html="issueDetailsCtrl.issueDetails.body | parseUserId : commentsItem.user.html_url"></span>
-                </div>
-              </div>
+                </md-card-content>
+              </md-card>
             </md-list-item>
 
             <md-list-item ng-repeat="commentsItem in issueDetailsCtrl.commentsData">
             <md-button aria-label class="listLogo">
               <img class="" ng-src="{{commentsItem.user.avatar_url}}">
             </md-button>
-            <div class="panel panel-info">
-              <div class="panel-heading">
-                <a ng-href="{{commentsItem.user.html_url}}" class="userId">
-                  <span ng-bind="commentsItem.user.login"></span>
-                  <md-tooltip>View {{commentsItem.user.login}}'s profile </md-tooltip>
-                </a>
+            <md-card>
+              <md-card-header-text class="panel-heading bg-info">
+                <userid details="commentsItem"></userid>
                 <span> last updated on </span>
                 <span class="md-caption" ng-bind="commentsItem.updated_at | date: 'mediumDate'"></span>
-              </div>
-              <div class="panel-body">
+              </md-card-header-text>
+              <md-card-content>
                 <span ng-bind-html="commentsItem.body | parseUserId : commentsItem.user.html_url"></span>
-              </div>
+              </md-card-content>
 
-            </div>
+              </md-card>
             </md-list-item>
             <div layout="row" layout-align="center center">
               <ul uib-pagination
@@ -89,8 +81,9 @@
 
               </ul>
             </div>
-          </md-card>
+
         </div>
+
         <div flex-gt-xs="20" hide-xs>
           <md-card>
             <md-card-header>

@@ -69,10 +69,11 @@
                           </span>
                         </span>
                         <span>by </span>
-                        <a ng-href="{{item.user.html_url}}" class="userId">
-                          <span ng-bind="item.user.login"></span>
-                          <md-tooltip>View {{item.user.login}}'s profile </md-tooltip>
-                        </a>
+                        <userid details="item"></userid>
+                        <!--<a ng-href="{{item.user.html_url}}" class="userId">-->
+                          <!--<span ng-bind="item.user.login"></span>-->
+                          <!--<md-tooltip>View {{item.user.login}}'s profile </md-tooltip>-->
+                        <!--</a>-->
                         <span ng-repeat="labelItem in item.labels" class="md-text">
                           <label>
                             <a class="btn btn-xs" aria-label="Labels" ng-style="mainCtrl.set_color(labelItem.color)">

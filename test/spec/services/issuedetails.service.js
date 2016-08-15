@@ -3,16 +3,17 @@
 describe('Service: issuedetailsSvc', function () {
 
   // load the service's module
-  beforeEach(module('gitissuesApp'));
-
-  // instantiate service
-  var issuedetails.service;
-  beforeEach(inject(function (_issuedetails.service_) {
-    issuedetails.service = _issuedetails.service_;
-  }));
-
-  it('should do something', function () {
-    expect(!!issuedetails.service).toBe(true);
-  });
+  // beforeEach(module('gitissuesApp'));
+  //
+  // // instantiate service
+  // var issuedetailsService;
+  //
+  // beforeEach(inject(function (issuedetailsSvc) {
+  //   issuedetailsService = issuedetailsSvc;
+  // }));
+  //
+  // it('should do something', function () {
+  //   expect(!!issuedetailsService).toBe(true);
+  // });
 
 });

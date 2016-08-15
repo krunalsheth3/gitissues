@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: gitHeader', function () {
+describe('Directive: userid', function () {
 
   // load the directive's module
   // beforeEach(module('gitissuesApp'));
@@ -13,8 +13,8 @@ describe('Directive: gitHeader', function () {
   // }));
   //
   // it('should make hidden element visible', inject(function ($compile) {
-  //   element = angular.element('<git-header></git-header>');
+  //   element = angular.element('<userid></userid>');
   //   element = $compile(element)(scope);
-  //   //expect(element.text()).toBe('this is the gitHeader directive');
+  //   expect(element.text()).toBe('this is the userid directive');
   // }));
 });

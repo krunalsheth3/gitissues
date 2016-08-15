@@ -61,7 +61,8 @@ angular.module('gitissuesApp')
           return {
             'background-color': color,
             'color' : '#FFFFFF',
-            'height': '19px'
+            'height': '16px',
+            'line-height': 1,
           };
         }
       },
