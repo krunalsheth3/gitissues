@@ -10,14 +10,13 @@ Getting started
    ```bash
    git clone https://github.com/krunalsheth3/gitissues.git
    ```
-2. Run this executable file, which will install Meteor 2
+2. Run this executable file, which will install npm & grunt
    ```bash
    sudo ./install_grunt.sh
    ```
-3. After confirming that node, npm & grunt are successfully installed just run the project by this command
-## Build & development
+3. After confirming that npm & grunt are successfully installed just run the project by this command
 
-Run `grunt serve --force` for preview.
+4.Run `grunt serve --force` for running the project.
 
 ## Testing
 
