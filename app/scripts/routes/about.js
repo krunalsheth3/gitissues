@@ -6,7 +6,6 @@ angular.module('gitissuesApp')
     $stateProvider
       .state('about', {
         url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl as aboutCtrl'
+        templateUrl: 'views/about.html'
       });
   }]);

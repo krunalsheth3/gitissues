@@ -3,11 +3,11 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
 
-        <md-button aria-label="Icon" class="md-icon-button listLogo" data-ng-click="navigateToDefaultPage('/')">
+        <md-button aria-label="Icon" class="md-icon-button listLogo" data-ng-click="navigateToHomepage('issues')">
           <img class="logo-image issuesLogo" ng-src="{{logoURL}}">
         </md-button>
 
-        <md-button class="md-button" aria-label="Icon" data-ng-click="navigateToDefaultPage('/')">
+        <md-button class="md-button" aria-label="Icon" data-ng-click="navigateToHomepage('issues')">
           <md-tooltip>All issues of ruby repository</md-tooltip>
           <span>
             <span>Ruby on Rails</span>
@@ -15,7 +15,7 @@
         </md-button>
         <span flex></span>
 
-        <md-button class="md-icon-button" aria-label="About project" data-ng-click="navigateToDefaultPage('/about')">
+        <md-button class="md-icon-button" aria-label="About project" data-ng-click="navigateToDefaultPage('about')">
           <md-tooltip>About project</md-tooltip>
           <md-icon>
             <i class="material-icons">face</i>
