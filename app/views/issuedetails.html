@@ -4,16 +4,16 @@
       <md-list>
         <md-list-item class="md-3-line">
           <div class="md-list-item-text ">
-            <h3>
+            <h2>
               <b ng-bind="issueDetailsCtrl.issueDetails.title"></b>
               <b ng-class="issueDetailsCtrl.issueDetails.state == 'open' ? 'success' : 'error'" ng-bind="' : ' +issueDetailsCtrl.issueDetails.state"> </b>
-            </h3>
-            <p>
-              <span class="md-caption"> #
+            </h2>
+            <h4>
+              <span> #
                 <span ng-bind="issueDetailsCtrl.issueDetails.number"></span>
-                <span ng-switch on="issueDetailsCtrl.issueDetails.state">
+                <span ng-switch on="issueDetailsCtrl.issueDetails.state" class="md-caption">
                   <span ng-switch-when="closed">
-                    <span ng-bind="' ' + item.state + ' on '"></span>
+                    <span ng-bind="' ' + issueDetailsCtrl.issueDetails.state + ' on '"></span>
                     <span ng-bind="issueDetailsCtrl.issueDetails.closed_at | date: 'mediumDate'"></span>
                   </span>
                   <span ng-switch-default>
@@ -26,7 +26,7 @@
                 <userid details="issueDetailsCtrl.issueDetails"></userid>
 
                 </span>
-            </p>
+            </h4>
           </div>
         </md-list-item>
         </md-list>
@@ -53,22 +53,25 @@
               </md-card>
             </md-list-item>
 
+            <md-divider></md-divider>
             <md-list-item ng-repeat="commentsItem in issueDetailsCtrl.commentsData">
-            <md-button aria-label class="listLogo">
-              <img class="" ng-src="{{commentsItem.user.avatar_url}}">
-            </md-button>
-            <md-card>
-              <md-card-header-text class="panel-heading bg-info">
-                <userid details="commentsItem"></userid>
-                <span> last updated on </span>
-                <span class="md-caption" ng-bind="commentsItem.updated_at | date: 'mediumDate'"></span>
-              </md-card-header-text>
-              <md-card-content>
-                <span ng-bind-html="commentsItem.body | parseUserId : commentsItem.user.html_url"></span>
-              </md-card-content>
+              <md-button aria-label class="listLogo">
+                <img class="" ng-src="{{commentsItem.user.avatar_url}}">
+              </md-button>
+              <md-card>
+                <md-card-header-text class="panel-heading bg-info">
+                  <userid details="commentsItem"></userid>
+                  <span> last updated on </span>
+                  <span class="md-caption" ng-bind="commentsItem.updated_at | date: 'mediumDate'"></span>
+                </md-card-header-text>
+                <md-card-content>
+                  <span ng-bind-html="commentsItem.body | parseUserId : commentsItem.user.html_url"></span>
+                </md-card-content>
 
-              </md-card>
+                </md-card>
+              <md-divider></md-divider>
             </md-list-item>
+
             <div layout="row" layout-align="center center">
               <ul uib-pagination
                   total-items="issueDetailsCtrl.totalItems"
