@@ -24,7 +24,7 @@ angular.module('gitissuesApp')
                 return response;
               },
               function(errResponse) {
-                sharedSvc.log("Failed to make api call to fetchIssuesDetails");
+                sharedSvc.error("Failed to make api call to fetchIssuesDetails");
               }
             )
           }]

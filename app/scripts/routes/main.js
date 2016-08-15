@@ -3,6 +3,7 @@
 angular.module('gitissuesApp')
   .config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
+    //default routes if no state or route is provided
     $urlRouterProvider.when('/', '/issues');
     $urlRouterProvider.when('issues/', '/issues');
 
@@ -31,7 +32,7 @@ angular.module('gitissuesApp')
                     return response;
                   },
                   function(errResponse) {
-                    sharedSvc.log("Failed to make api call to fetchIssues");
+                    sharedSvc.error("Failed to make api call to fetchIssues");
                   }
                 )
               }]

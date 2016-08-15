@@ -82,7 +82,7 @@ describe('Controller: IssuedetailsCtrl', function () {
     if(IssuedetailsCtrl.issueDetails[0].comments > 0) {
       expect(IssuedetailsCtrl.commentsData).toBeDefined();
     } else {
-      expect(IssuedetailsCtrl.commentsData).toEqual('No comments available');
+      expect(IssuedetailsCtrl.commentsData).toEqual([]);
     }
   });
 });

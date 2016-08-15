@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name gitissuesApp.issuedetails.service
- * @description
+ * @description makes REST API call to fetch details of a specific Issue, comments and returns that using a deferred object
  * # issuedetails.service
  * Factory in the gitissuesApp.
  */

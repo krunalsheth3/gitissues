@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name gitissuesApp.shared
- * @description
+ * @description utility functions that are used througout the portal
  * # shared
  * Factory in the gitissuesApp.
  */

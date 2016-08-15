@@ -3,7 +3,7 @@
 /**
  * @ngdoc directive
  * @name gitissuesApp.directive:gitHeader
- * @description
+ * @description Generic header directive to be used in the portal
  * # gitHeader
  */
 angular.module('gitissuesApp')
@@ -13,12 +13,6 @@ angular.module('gitissuesApp')
       restrict: 'AE',
       replace: false,
       link: function postLink(scope, element, attrs) {
-        scope.showErrorMessage = false;
-        scope.logoURL = "https://avatars.githubusercontent.com/u/4223?v=3";
-
-        scope.navigateToHomepage = function(goToPath) {
-          $state.go(goToPath);
-        }
 
         scope.goToGitHub = function() {
           $window.location.href = "https://github.com/";
@@ -27,7 +21,7 @@ angular.module('gitissuesApp')
         /*
          *  Page navigation to home page
          */
-        scope.navigateToDefaultPage = function(link) {
+        scope.navigatePage= function(link) {
           $state.go(link);
         }
       }

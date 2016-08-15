@@ -4,7 +4,9 @@
  * @ngdoc filter
  * @name gitissuesApp.filter:descrLimit
  * @function
- * @description
+ * @description Has 2 filters added to it
+ * descriLimit filter uses regex to trim space to the given 'l' characters and returns the trimmed text
+ * parseUserId identifies a userID with '@' and makes it as a link
  * # descrLimit
  * Filter in the gitissuesApp.
  */

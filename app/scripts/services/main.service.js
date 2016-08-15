@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name gitissuesApp.main
- * @description
+ * @description makes REST API call to fetch list of Issues for a given repository
  * # main
  * Factory in the gitissuesApp.
  */

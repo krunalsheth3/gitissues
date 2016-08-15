@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name gitissuesApp.controller:MainCtrl
- * @description
+ * @description Its a controller for the main.html page
  * # MainCtrl
  * Controller of the gitissuesApp
  */
@@ -39,14 +39,14 @@ angular.module('gitissuesApp')
     ]
 
     /*
-    * on any kinds of state change trigger the pageChanged fucntion to load new data
+    * on any kinds of state change trigger the pageChanged function to load new data
      */
     self.onStateChange = function() {
       this.pageChanged(self.current, self.defaultSortOrder, self.state, self.direction)
     }
 
     /*
-    * on Change of date
+    * on Change of date trigger the pageChanged function to load new data
     */
     self.onDateChange = function () {
       self.sortReverse = !self.sortReverse;
@@ -61,7 +61,7 @@ angular.module('gitissuesApp')
     }
 
     /*
-    * Invoked when pagination or dropdown action changesto fetch data for next page
+    * Invoked when pagination or dropdown action changes to fetch data for next page
      */
     self.pageChanged = function(page, sort, state, direction) {
       self.currentPage = page;
@@ -72,11 +72,12 @@ angular.module('gitissuesApp')
       var issuesList = mainSvc.fetchIssues(self.currentPage, self.defaultSortOrder, self.state, self.direction);
       issuesList.then(
         function(response) {
+          sharedSvc.log("Retrieved data from fetchIssues");
           self.listOfIssues = response.data;
         },
         function(errResponse) {
           self.listOfIssues = {};
-          sharedSvc.log("Failed to make api call to fetchIssues");
+          sharedSvc.error("Failed to make api call to fetchIssues");
         }
       )
     };

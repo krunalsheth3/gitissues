@@ -20,12 +20,16 @@ angular
     'ngMaterial'
   ])
 
-  .config(['$urlRouterProvider', '$locationProvider','$httpProvider', function($urlRouterProvider, $locationProvider, $httpProvider) {
-   // $locationProvider.html5Mode(true);
+  .config(['$urlRouterProvider', '$httpProvider', '$mdThemingProvider', function($urlRouterProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider.otherwise('/');
 
     //adding the gitIssuesInterceptor by its name for all incoming and outgoing XHR calls
     $httpProvider.interceptors.push('gitIssuesInterceptor');
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .warnPalette('purple')
+      .accentPalette('pink');
   }])
 
   //Default constants being used throughout the project
@@ -36,12 +40,6 @@ angular
     'itemsPerPage'   : 25
   })
 
-
-  .config(function($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('indigo')
-      .accentPalette('lime');
-  });
 
 
 

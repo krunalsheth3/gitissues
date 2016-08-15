@@ -11,7 +11,7 @@
       </md-subheader>
 
 
-      <md-card class="container" flex-auto="" md-scroll-y>
+      <md-card class="container" flex-auto="" md-scroll-y  id="cardContent">
               <md-list>
                 <md-list-item>
                   <md-input-container class="md-block" flex-gt-xs>
@@ -51,7 +51,7 @@
                     <a href="" ng-click="mainCtrl.goToDetailsPage(item.number)">
                       <h3>
                         <b ng-bind="item.title | descrLimit: 70"></b>
-                          <b ng-class="item.state == 'open' ? 'success' : 'error'" ng-bind="' : ' +item.state"> </b>
+                          <b ng-class="item.state == 'open' ? 'text-success' : 'text-danger'" ng-bind="' : ' +item.state"> </b>
                       </h3>
                     </a>
                     <p>

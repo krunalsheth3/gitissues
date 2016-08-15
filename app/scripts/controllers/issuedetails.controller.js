@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name gitissuesApp.controller:IssuedetailsCtrl
- * @description
+ * @description controller for Issue details html page
  * # IssuedetailsCtrl
  * Controller of the gitissuesApp
  */
@@ -22,8 +22,6 @@ angular.module('gitissuesApp')
 
     if(self.issueDetails.comments > 0) {
       getComments(self.currentPage);
-    } else {
-      self.commentsData = "No comments available";
     }
 
     /*
@@ -44,6 +42,7 @@ angular.module('gitissuesApp')
         }
       )
     }
+
     /*
     * Invoked when pagination clicked
     */

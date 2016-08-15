@@ -30,15 +30,9 @@ md-card a:first-of-type{
   color: #000000;
 }
 
-h2 {
-  font-weight: 400;
-}
-
-
 md-toolbar:not(.md-hue-1), .md-fab {
   fill: #fff;
 }
-
 
 .md-button.listLogo {
   height: 7rem;

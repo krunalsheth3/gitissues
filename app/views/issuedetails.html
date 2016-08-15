@@ -1,4 +1,12 @@
 <div layout="column" class="relative" layout-fill role="main">
+
+  <md-button class="md-fab md-fab-bottom-right md-mini" aria-label="Back" ui-sref="issues">
+    <md-icon>
+      <i class="material-icons">keyboard_backspace</i>
+    </md-icon>
+    <md-toolbar>Back to Issues Page</md-toolbar>
+  </md-button>
+
   <md-content flex="">
     <md-card layout-padding="">
       <md-list>
@@ -38,7 +46,7 @@
         <div flex-gt-xs="80" >
 
             <md-list-item>
-              <md-button aria-label class="listLogo">
+              <md-button aria-label="User Avatar" class="listLogo">
                 <img class="" ng-src="{{issueDetailsCtrl.issueDetails.user.avatar_url}}">
               </md-button>
               <md-card>
@@ -55,7 +63,7 @@
 
             <md-divider></md-divider>
             <md-list-item ng-repeat="commentsItem in issueDetailsCtrl.commentsData">
-              <md-button aria-label class="listLogo">
+              <md-button aria-label="User avatar" class="listLogo">
                 <img class="" ng-src="{{commentsItem.user.avatar_url}}">
               </md-button>
               <md-card>
@@ -108,7 +116,7 @@
               <md-card-header-text class="issueBlocks">
                 <span class="md-subhead">Assignees</span>
                 <span class="md-subhead"  ng-repeat="assigneeItem in issueDetailsCtrl.issueDetails.assignees">
-                  <md-button aria-label class="md-icon-button">
+                  <md-button aria-label="User avatar" class="md-icon-button">
                     <img class="" ng-src="{{assigneeItem.avatar_url}}">
                   </md-button>
                   <a ng-href="{{assigneeItem.html_url}}" aria-label="Assignees" class="userId">
