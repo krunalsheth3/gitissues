@@ -56,7 +56,8 @@
                   <span class="md-caption" ng-bind="issueDetailsCtrl.issueDetails.updated_at | date: 'mediumDate'"></span>
                 </md-card-header-text>
                 <md-card-content>
-                  <span ng-bind-html="issueDetailsCtrl.issueDetails.body | parseUserId : commentsItem.user.html_url"></span>
+                  <span compile="issueDetailsCtrl.issueDetails.body | parseUserId"></span>
+
                 </md-card-content>
               </md-card>
             </md-list-item>
@@ -73,7 +74,7 @@
                   <span class="md-caption" ng-bind="commentsItem.updated_at | date: 'mediumDate'"></span>
                 </md-card-header-text>
                 <md-card-content>
-                  <span ng-bind-html="commentsItem.body | parseUserId : commentsItem.user.html_url"></span>
+                  <span compile="commentsItem.body | parseUserId"></span>
                 </md-card-content>
 
                 </md-card>

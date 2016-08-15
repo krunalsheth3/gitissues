@@ -14,9 +14,6 @@ angular.module('gitissuesApp')
            * before loading the data for issuedetails.controller.js , get all the issue specific details before
            * loading the constructor
            */
-          // issueDetails: function () {
-          //   return {};
-          // }
           issueDetails : ['issuedetailsSvc', 'sharedSvc','$stateParams', function(issuedetailsSvc, sharedSvc, $stateParams) {
 
             return issuedetailsSvc.fetchIssuesDetails($stateParams.issueId).then(
@@ -28,7 +25,6 @@ angular.module('gitissuesApp')
               }
             )
           }]
-
         }
       });
   }]);

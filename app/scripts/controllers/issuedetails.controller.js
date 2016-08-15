@@ -8,8 +8,8 @@
  * Controller of the gitissuesApp
  */
 angular.module('gitissuesApp')
-  .controller('IssuedetailsCtrl',['issueDetails', 'defaultConst', 'sharedSvc', 'issuedetailsSvc', '$stateParams',
-                function (issueDetails, defaultConst, sharedSvc, issuedetailsSvc, $stateParams) {
+  .controller('IssuedetailsCtrl',['issueDetails', 'defaultConst', 'sharedSvc', 'issuedetailsSvc', '$stateParams','$window',
+                function (issueDetails, defaultConst, sharedSvc, issuedetailsSvc, $stateParams, $window) {
 
     var self = this;
     self.itemsPerPage = defaultConst.itemsPerPage;
@@ -19,7 +19,6 @@ angular.module('gitissuesApp')
     self.issueDetails = issueDetails.data;
     self.totalItems = defaultConst.maxPaginationSize;
 
-
     if(self.issueDetails.comments > 0) {
       getComments(self.currentPage);
     }
@@ -28,6 +27,7 @@ angular.module('gitissuesApp')
     * getComments function will fetch the comments if pagination is clicked or default comments is greater than 0
      */
     function getComments(currentPage) {
+
       var commentsList = issuedetailsSvc.fetchCommentsDetails($stateParams.issueId, currentPage);
       commentsList.then(
         function(response) {
@@ -42,6 +42,26 @@ angular.module('gitissuesApp')
         }
       )
     }
+
+    /*
+    * Api call to fetch the URL for userName provided
+     */
+    self.fetchUserProfile = function (userName) {
+      var modUserName = userName.slice(1);
+
+      sharedSvc.fetchUserProfileLink(modUserName).then(
+        function(response){
+          if(angular.isDefined(response))
+            $window.open(response.data.html_url);
+          else
+            $window.alert("No github account found");
+        },
+        function(errResponse) {
+          sharedSvc.error("Profile link not found for the given user");
+        }
+      )
+    }
+
 
     /*
     * Invoked when pagination clicked

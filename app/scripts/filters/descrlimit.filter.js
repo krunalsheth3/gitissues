@@ -27,13 +27,17 @@ angular.module('gitissuesApp')
     };
   })
 
+  /*
+  * parseUserId takes input which is body of the comment & using regex replaces all occurences of @userid with
+  * a link tag which when clicked makes an api call to fetch userInfo and load his/her github profile page
+   */
   .filter('parseUserId', function () {
-    return function (input, replacedUrl) {
+    return function (input, ctrl) {
+
       var y = input;
       if(angular.isDefined(input))
-        y = input.replace(new RegExp('@[a-zA-Z]+'), '<a href="'+replacedUrl+'" target="_blank" class="userId">$&</a>')
+        y = input.replace(/@[a-zA-Z|\d|-]+/g,'<a href="" target="_blank" class="userId" ng-click="issueDetailsCtrl.fetchUserProfile(\'$&\')">$&</a>');
 
       return y;
     };
   });
-

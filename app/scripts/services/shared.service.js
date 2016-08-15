@@ -8,9 +8,34 @@
  * Factory in the gitissuesApp.
  */
 angular.module('gitissuesApp')
-  .factory('sharedSvc', ['$log', function($log){
+  .factory('sharedSvc', ['$log','$http', '$q','defaultConst', function($log, $http, $q, defaultConst){
     return {
       messageCount : 0,
+
+      /*
+       * GET user profile link from his/her ID
+       */
+      fetchUserProfileLink : function (userId) {
+        var deferObject = deferObject || $q.defer();
+
+        var req = {
+          method: 'GET',
+          url: "https://api.github.com/users/"+userId
+        };
+
+        $http(req).then(function successCallBack(response) {
+          if(angular.isDefined(response)) {
+            deferObject.resolve(response);
+          } else {
+            deferObject.reject(response);
+          }
+        }, function errorCallBack(response) {
+          deferObject.reject(response);
+        })
+
+        return deferObject.promise;
+
+      },
 
       /*
        * This function parses the entire LINK header and returns the value of the page element with the rel="last"
